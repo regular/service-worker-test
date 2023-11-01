@@ -4,6 +4,10 @@ self.addEventListener('activate', e=>e.waitUntil( (async ()=>{
   return ping()
 })()))
 
+self.addEventListener('message', e=>{
+  e.source.postMessage(`You said: ${e.data}`)
+})
+
 // -- util
 
 let i = 0

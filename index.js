@@ -17,3 +17,7 @@ navigator.serviceWorker.register('sw.js').then(()=>{
 }).catch(err=>{
   message.set(err.message)
 })
+
+navigator.serviceWorker.ready.then( registration => {
+  registration.active.postMessage("Hi service worker")
+})
