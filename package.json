@@ -17,6 +17,7 @@
     "web-push": "^3.6.6"
   },
   "devDependencies": {
-    "http-server": "^14.1.1"
+    "http-server": "^14.1.1",
+    "pwa-asset-generator": "^6.3.1"
   }
 }

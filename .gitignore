@@ -1,3 +1,4 @@
+.DS_Store
 .vapid
 node_modules
 package-lock.json

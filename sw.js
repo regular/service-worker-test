@@ -1,7 +1,7 @@
 self.addEventListener('activate', e=>e.waitUntil( (async ()=>{
   await clients.claim()
-  setInterval(ping, 2000)
-  return ping()
+  setInterval(ping, 6000)
+  await ping()
 })()))
 
 self.addEventListener('message', e=>{
