@@ -1,3 +1,19 @@
+self.addEventListener('install', e => {
+  e.waitUntil(
+    caches.open('sw-cache').then( cache => {
+      return cache.add('index.html')
+    })
+  )
+})
+
+self.addEventListener('fetch', e => {
+  e.respondWith(
+    caches.match(e.request).then( res => {
+      return res || fetch(e.request)
+    })
+  )
+})
+
 self.addEventListener('activate', e=>e.waitUntil( (async ()=>{
   await clients.claim()
   setInterval(ping, 6000)
