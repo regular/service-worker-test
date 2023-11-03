@@ -5,7 +5,8 @@ self.addEventListener('activate', e=>e.waitUntil( (async ()=>{
 })()))
 
 self.addEventListener('message', e=>{
-  e.source.postMessage(`You said: ${e.data}`)
+  const {type, url, id} = e.source
+  e.source.postMessage(`${type} #${id} @${url}, you said: ${e.data}`)
 })
 
 // -- util
