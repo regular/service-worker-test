@@ -10,8 +10,11 @@
   "author": "Jan Bölsche <jan@lagomorph.de> (http://regular.codes/)",
   "license": "ISC",
   "dependencies": {
+    "bl": "^6.0.8",
+    "convert-vapid-public-key": "^2.0.0",
     "mutant": "^3.29.0",
-    "send": "^0.18.0"
+    "send": "^0.18.0",
+    "web-push": "^3.6.6"
   },
   "devDependencies": {
     "http-server": "^14.1.1"

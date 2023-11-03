@@ -1,6 +1,6 @@
 const h = require('mutant/html-element')
 const {Value} = require('mutant')
-const {urlBase64ToUint8Array} = require('./util')
+const convertKey = require('./b64url-to-unit8array')
 
 const message = Value()
 
@@ -24,7 +24,8 @@ navigator.serviceWorker.ready.then( async reg => {
 
   const sub = await reg.pushManager.getSubscription()
   if (sub) {
-    console.log('Already subscribed', subscription.endpoint)
+    console.log('Already subscribed', sub.endpoint)
+    postSub(sub)
     //setUnsubscribeButton();
   } else {
     //setSubscribeButton();
@@ -32,20 +33,26 @@ navigator.serviceWorker.ready.then( async reg => {
   }
 })
 
-async function subscribere() {
+async function subscribe(reg) {
+  console.log('subscribing ...')
   const res = await fetch('./vapidPublicKey')
   const vapidPublicKey = await res.text()
-  const convertedVapidKey = urlBase64ToUint8Array(vapidPublicKey)
+  const applicationServerKey = convertKey(vapidPublicKey)
 
   const sub = await reg.pushManager.subscribe({
-    //userVisibleOnly: true,
-    applicationServerKey: convertedVapidKey
+    userVisibleOnly: true,
+    applicationServerKey
   })
   console.log('Subscribed', sub.endpoint)
+  await postSub(sub)
+}
+
+async function postSub(sub) {
+  //const {endpoint, keys} = sub
   await fetch('subscribe', {
     method: 'post',
     headers: { 'Content-type': 'application/json' },
-    body: sub.toJSON()
+    body: JSON.stringify(sub)
   })
 }
 

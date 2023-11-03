@@ -9,15 +9,24 @@ self.addEventListener('message', e=>{
   e.source.postMessage(`${type} #${id} @${url}, you said: ${e.data}`)
 })
 
+self.addEventListener( "push", e => {
+  const message = e.data.text()
+  sendAll(message)
+})
+
 // -- util
 
-let i = 0
-
-async function ping() {
+async function sendAll(text) {
   const allClients = await clients.matchAll({
     includeUncontrolled: true,
   })
   return Promise.all(allClients.map(client => {
-    return client.postMessage(`Hello from SW! ${i++}`)
+    return client.postMessage(text)
   }))
+}
+
+let i = 0
+
+async function ping() {
+  await sendAll(`Ping from SW! ${i++}`)
 }
