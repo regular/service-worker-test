@@ -1,7 +1,11 @@
 self.addEventListener('install', e => {
   e.waitUntil(
     caches.open('sw-cache').then( cache => {
-      return cache.add('index.html')
+      return cache.addAll([
+        'index.html',
+        'icon2.png',
+        'icon2_depth.jpg'
+      ])
     })
   )
 })

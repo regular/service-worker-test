@@ -16,6 +16,7 @@
   "dependencies": {
     "bl": "^6.0.8",
     "convert-vapid-public-key": "^2.0.0",
+    "module-styles": "^1.0.0",
     "mutant": "^3.29.0",
     "send": "^0.18.0",
     "web-push": "^3.6.6"

@@ -2,9 +2,11 @@ const h = require('mutant/html-element')
 const {Value} = require('mutant')
 const convertKey = require('./b64url-to-unit8array')
 
+require('./3d')
+
 const message = Value()
 
-document.body.append(h('div', message))
+document.body.append(h('.message', message))
 
 message.set('Loading sw.js')
 
