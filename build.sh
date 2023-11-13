@@ -1,3 +1,4 @@
+#/usr/bin/env bash
 set -e
 CAP=`cat .pwa-url-capability`
 npx tre-compile index.js --force --no-csp > public/index.html
