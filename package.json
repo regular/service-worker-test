@@ -10,8 +10,8 @@
   "author": "Jan Bölsche <jan@lagomorph.de> (http://regular.codes/)",
   "license": "ISC",
   "html-inject-meta": {
-    "manifest": "/manifest.json",
-    "theme-color": "blue"
+    "manifest": "manifest.json",
+    "theme-color": "#333333"
   },
   "dependencies": {
     "bl": "^6.0.8",

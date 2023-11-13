@@ -15,7 +15,7 @@ document.body.appendChild(h('div', [
     disabled,
     'ev-click': ()=>{
       disabled.set(true)
-      setTimeout( ()=> buttonAction(), 500)
+      setTimeout( ()=> buttonAction(), 100)
     },
   }, buttonText)
 ]))
@@ -55,6 +55,15 @@ navigator.serviceWorker.ready.then( async reg => {
 
 async function subscribe(reg) {
   console.log('subscribing ...')
+  let permission = Notification && Notification.permission
+  if (permission !== 'granted') {
+    permission = await Notification.requestPermission()
+  }
+  if (permission !== 'granted') {
+    disabled.set(false)
+    return
+  }
+
   const res = await fetch('./vapidPublicKey')
   const vapidPublicKey = await res.text()
   const applicationServerKey = convertKey(vapidPublicKey)

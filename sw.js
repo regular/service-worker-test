@@ -30,8 +30,14 @@ self.addEventListener('message', e=>{
 })
 
 self.addEventListener( "push", e => {
-  const message = e.data.text()
-  sendAll(message)
+  e.waitUntil((()=>{
+    const message = e.data.text()
+    const options = {
+      body: message
+    }
+    sendAll(message)
+    return self.registration.showNotification('Hello from PWA', options)
+  })())
 })
 
 // -- util

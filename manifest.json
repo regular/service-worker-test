@@ -1,9 +1,9 @@
 {
   "name": "PWA Minimus",
   "short_name": "PWA mini",
-  "start_url": "/",
+  "start_url": "/pwa/",
   "display": "standalone",
-  "theme_color": "#00007f",
+  "theme_color": "#000055",
   "background_color":"#007f00",
   "icons": []
 }
