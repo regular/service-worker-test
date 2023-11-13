@@ -1,7 +1,7 @@
 {
   "name": "PWA Minimus",
   "short_name": "PWA mini",
-  "start_url": "/pwa/",
+  "start_url": "/CAPABILITY-URL/",
   "display": "standalone",
   "theme_color": "#000055",
   "background_color":"#007f00",
