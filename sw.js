@@ -3,6 +3,7 @@ self.addEventListener('install', e => {
     caches.open('sw-cache').then( cache => {
       return cache.addAll([
         'index.html',
+        'icon3.png',
         'icon2.png',
         'icon2_depth.jpg'
       ])
